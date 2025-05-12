@@ -1,7 +1,7 @@
-#Readme
+# Readme
 
 
-Project Structure
+## Project Structure
 user-bio-app/
 ├── app/
 │   ├── public/
@@ -15,7 +15,7 @@ user-bio-app/
 ├── docker-compose.yml
 └── .dockerignore
 
-How to Deploy:
+## How to Deploy:
 Make sure Docker and Docker Compose are installed on your system
 Place all files in the directory structure as shown above
 Run the following command from the root directory:
@@ -25,7 +25,7 @@ Run the following command from the root directory:
 Access the application at http://localhost:3000
 
 
-Features of This Docker Setup
+## Features of This Docker Setup
 Easy Deployment: Just one command to bring up the entire stack
 Data Persistence: PostgreSQL data is stored in a named volume
 Environment Variables: Database connection parameters are passed via environment variables
@@ -34,7 +34,7 @@ Development Friendly: Code changes are reflected without rebuilding the containe
 Isolated Networking: The services communicate via Docker's internal network
 Simple Scaling: Ready for scaling with orchestration tools like Docker Swarm or Kubernetes
 
-This Docker Compose setup will create two containers:
+### This Docker Compose setup will create two containers:
 
 A Node.js container running the web application
 A PostgreSQL container for the database
