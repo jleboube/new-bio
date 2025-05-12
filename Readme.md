@@ -2,18 +2,21 @@
 
 
 ## Project Structure
-user-bio-app/
-├── app/
-│   ├── public/
-│   │   ├── index.html
-│   │   ├── styles.css
-│   │   └── app.js
-│   ├── server.js
-│   ├── database.js
-│   └── package.json
+
+```
+├── app
+│   ├── database.js
+│   ├── node_modules
+│   ├── package.json
+│   ├── public
+│   │   ├── app.js
+│   │   ├── index.html
+│   │   ├── styles.css
+│   ├── server.js
+├── docker-compose.yaml
 ├── Dockerfile
-├── docker-compose.yml
-└── .dockerignore
+└── Readme.md
+```
 
 ## How to Deploy:
 Make sure Docker and Docker Compose are installed on your system
