@@ -5,11 +5,8 @@ services:
     build: .
     ports:
       - "3000:3000"
-    environment:
-      - DB_HOST=db
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
-      - DB_NAME=userbios
+    env_file:
+      - ./app/.env
     depends_on:
       - db
     restart: unless-stopped

@@ -25,16 +25,25 @@ const initDb = async () => {
     console.log('Database initialized successfully');
   } catch (err) {
     console.error('Error initializing database:', err);
-    // Wait a bit and try again if connection fails (useful during container startup)
-    if (err.code === 'ECONNREFUSED') {
-      console.log('Database connection failed. Retrying in 5 seconds...');
-      setTimeout(initDb, 5000);
-    }
+    process.exit(1);
   }
 };
 
-// Call initialization
-initDb();
+const migrateDb = async () => {
+  try {
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_hash VARCHAR(255);`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_reset_token VARCHAR(255);`);
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS password_reset_expires TIMESTAMPTZ;`);
+    console.log('Database migration completed');
+  } catch (err) {
+    console.error('Error running migration:', err);
+    process.exit(1);
+  }
+};
+
+// Call initialization and migration
+initDb().then(migrateDb);
 
 module.exports = {
   query: (text, params) => pool.query(text, params)
