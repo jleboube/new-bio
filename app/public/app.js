@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(userData),
+          credentials: 'include',
         });
       } else {
         // Create new user
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(userData),
+          credentials: 'include',
         });
       }
       
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadUsers() {
     try {
-      const response = await fetch('/api/users');
+      const response = await fetch('/api/users', { credentials: 'include' });
       const data = await response.json();
       displayUsers(data.users);
     } catch (error) {
@@ -108,7 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const userId = e.target.getAttribute('data-id');
     
     try {
-      const response = await fetch(`/api/users/${userId}`);
+      const response = await fetch(`/api/users/${userId}`, { credentials: 'include' });
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.error || 'Unauthorized');
+        return;
+      }
       const data = await response.json();
       const user = data.user;
       
@@ -140,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     try {
       await fetch(`/api/users/${userId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        credentials: 'include',
       });
       loadUsers();
     } catch (error) {
