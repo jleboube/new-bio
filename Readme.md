@@ -23,7 +23,8 @@ Make sure Docker and Docker Compose are installed on your system
 Place all files in the directory structure as shown above
 Run the following command from the root directory:
 
-'docker-compose up -d'
+'docker-compose -f docker-compose.prod.yaml build'
+'docker-compose -f docker-compose.prod.yaml up -d'
 
 Access the application at http://localhost:3000
 
