@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (userIdInput.value) {
         // Update existing user
-        await fetch(`/api/users/\${userIdInput.value}`, {
+        await fetch(`/api/users/${userIdInput.value}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userId = e.target.getAttribute('data-id');
     
     try {
-      const response = await fetch(`/api/users/\${userId}`);
+      const response = await fetch(`/api/users/${userId}`);
       const data = await response.json();
       const user = data.user;
       
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userId = e.target.getAttribute('data-id');
     
     try {
-      await fetch(`/api/users/\${userId}`, {
+      await fetch(`/api/users/${userId}`, {
         method: 'DELETE'
       });
       loadUsers();
