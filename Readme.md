@@ -44,4 +44,4 @@ Simple Scaling: Ready for scaling with orchestration tools like Docker Swarm or 
 
 A Node.js container running the web application
 A PostgreSQL container for the database
-The data will persist even if you restart the containers, thanks to the volume configuration. If you need to make changes to the application, you can simply update the code and restart the containers with 'docker compose restart'.
+The data will persist even if you restart the containers, thanks to the volume configuration. If you need to make changes to the application, you can simply update the code and restart the containers with ``` 'docker compose restart' ```.
