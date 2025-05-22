@@ -263,6 +263,16 @@ app.post('/api/reset-password', async (req, res) => {
   }
 });
 
+// Protect admin UI (index.html) so only admins can access
+const adminIndexPath = path.join(__dirname, 'public', 'index.html');
+app.get('/', (req, res, next) => {
+  if (req.session && req.session.isAdmin) {
+    res.sendFile(adminIndexPath);
+  } else {
+    res.redirect('/user.html');
+  }
+});
+
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:\${PORT}`);
