@@ -23,8 +23,10 @@ Make sure Docker and Docker Compose are installed on your system
 Place all files in the directory structure as shown above
 Run the following command from the root directory:
 
-'docker-compose -f docker-compose.prod.yaml build'
-'docker-compose -f docker-compose.prod.yaml up -d'
+```
+'docker compose -f docker-compose.prod.yaml build'
+'docker compose -f docker-compose.prod.yaml up -d'
+```
 
 Access the application at http://localhost:3000
 
@@ -42,4 +44,4 @@ Simple Scaling: Ready for scaling with orchestration tools like Docker Swarm or 
 
 A Node.js container running the web application
 A PostgreSQL container for the database
-The data will persist even if you restart the containers, thanks to the volume configuration. If you need to make changes to the application, you can simply update the code and restart the containers with docker-compose restart.
+The data will persist even if you restart the containers, thanks to the volume configuration. If you need to make changes to the application, you can simply update the code and restart the containers with 'docker compose restart'.
